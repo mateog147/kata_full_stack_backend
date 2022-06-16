@@ -9,5 +9,4 @@ import java.util.ArrayList;
 @Repository
 public interface TodoListRepository extends CrudRepository<TodoList, Long> {
     public abstract ArrayList<TodoList> findByIsActive(Boolean flag);
-    //public abstract ArrayList<TodoList> findByEmail(String email);
 }
