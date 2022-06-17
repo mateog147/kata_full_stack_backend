@@ -43,7 +43,7 @@ public class TodoListController {
         if (ok) {
             return "Se eliminó la lista con id " + id;
         } else {
-            return "No pudo eliminar la lista o con id" + id;
+            return "No pudo eliminar la lista con id " + id;
         }
     }
 

@@ -24,6 +24,11 @@ public class TaskController {
         return taskService.getAll();
     }
 
+    @GetMapping("task/{id}")
+    public Optional<Task> getTask(@PathVariable("id") Long id){
+        return taskService.getById(id);
+    }
+
     @PostMapping("todolist/{id}/task")
     public Task saveNewTask(@RequestBody Task newTask,@PathVariable("id") Long id) {
         Optional<Task> task = todoListService.getById(id).map(list ->{

@@ -46,12 +46,12 @@ public class TodoListService {
 
 
     public boolean deleteList(Long id) {
-        try{
-            todoListRepository.deleteById(id);
-            return true;
-        }catch(Exception err){
-            return false;
-        }
+        Optional<TodoList> saveList = todoListRepository.findById(id)
+                .map(list -> {
+                    list.setActive(false);
+                    return todoListRepository.save(list);
+                });
+        return saveList.isPresent();
     }
 
     
