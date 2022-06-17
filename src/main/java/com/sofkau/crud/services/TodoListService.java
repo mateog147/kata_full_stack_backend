@@ -9,6 +9,15 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+/**
+ * Clase de servicio para las listas TO-DO.
+ * Cuenta con con los metodos para guardar, editar y actualizar las tareas de la base de datos.
+ * Usa los metodos expuestos por Hibernate al implementar la interface TodoListInterface.
+ *
+ * @author Mateo Gutierrez <mateog147@hotmail.com>
+ * @version 1.0.0 2022/06/17
+ * @since 1.0.0
+ */
 @Service
 public class TodoListService {
     @Autowired
@@ -31,6 +40,13 @@ public class TodoListService {
         return todoListRepository.findByIsActive(true);
     }
 
+    /**
+     * El metodo actualizar valida que exista el Id.
+     * Si no existe lo creara dentro de la base de datos.
+     * @param id
+     * @param newList
+     * @return
+     */
     public TodoList updateInfo(Long id, TodoList newList){
         return todoListRepository.findById(id)
                 .map(list -> {
@@ -44,7 +60,12 @@ public class TodoListService {
                 });
     }
 
-
+    /**
+     * El metodo borrar no hace borrado fisico de la lista.
+     * En su lugar hace borrado logico pasando es atributo IsActive a false.
+     * @param id
+     * @return
+     */
     public boolean deleteList(Long id) {
         Optional<TodoList> saveList = todoListRepository.findById(id)
                 .map(list -> {

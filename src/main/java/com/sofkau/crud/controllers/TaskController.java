@@ -9,6 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * Clase controladora tipo REST para las tareas..
+ *
+ * @author Mateo Gutierrez <mateog147@hotmail.com>
+ * @version 1.0.0 2022/06/17
+ * @since 1.0.0
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/api/")

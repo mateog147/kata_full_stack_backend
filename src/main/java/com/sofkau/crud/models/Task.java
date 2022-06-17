@@ -6,17 +6,39 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
+/**
+ * Task.
+ * Entidad que representa las tareas.
+ *
+ * @author Mateo Gutierrez <mateog147@hotmail.com>
+ * @version 1.0.0 2022/06/17
+ * @since 1.0.0
+ */
 @Entity
 @Table(name = "tasks")
 public class Task {
+    /**
+     * Identificado autoincremental.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
 
+    /**
+     * Descripcción de la tarea.
+     */
     private String description;
+    /**
+     * Atributo para saber si esta completa o no
+     */
     private Boolean isComplete;
 
+    /**
+     * Columna que asocia una tarea a una lista.
+     * La lista puede tener de 0 a n Tareas.
+     * Una tarea solo puede tener una lista.
+     */
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "list_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)

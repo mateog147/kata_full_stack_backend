@@ -9,6 +9,15 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * Clase de servicio para las tareas.
+ * Cuenta con con los metodos para guardar, editar, eliminar y actualizar las tareas de la base de datos.
+ * Usa los metodos expuestos por Hibernate al implementar la interface TaskInterface.
+ *
+ * @author Mateo Gutierrez <mateog147@hotmail.com>
+ * @version 1.0.0 2022/06/17
+ * @since 1.0.0
+ */
 @Service
 public class TaskService {
     @Autowired
@@ -30,6 +39,13 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
+    /**
+     * El metodo actualizar valida que exista el Id.
+     * Si no existe lo creara dentro de la base de datos
+     * @param id
+     * @param requestTask
+     * @return
+     */
     public Task updateInfo(Long id, Task requestTask){
         return taskRepository.findById(id)
                 .map(task -> {
@@ -43,6 +59,13 @@ public class TaskService {
                 });
     }
 
+    /**
+     * Este metodo cambia el atributo boleano IsComplete.
+     * true -> false.
+     * false -> true.
+     * @param id
+     * @return
+     */
     public Task completeTask(Long id){
         return taskRepository.findById(id)
                 .map(task -> {

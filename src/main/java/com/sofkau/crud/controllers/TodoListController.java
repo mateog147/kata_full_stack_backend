@@ -9,6 +9,14 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+
+/**
+ * Clase controladora tipo REST para las listas TO-DO.
+ *
+ * @author Mateo Gutierrez <mateog147@hotmail.com>
+ * @version 1.0.0 2022/06/17
+ * @since 1.0.0
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/api/todolist")
